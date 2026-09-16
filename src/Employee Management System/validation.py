@@ -8,6 +8,7 @@ def get_id():
             return emp_id
 
         except ValueError:
+            # ValueError occurs when user enters something that cannot be converted into an integer.
             print("Please enter a valid number.")
 
 def get_name(message):
@@ -16,5 +17,4 @@ def get_name(message):
         if name == "":
             print("Name cannot be empty.")
             continue
-
         return name

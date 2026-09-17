@@ -5,3 +5,39 @@
 2026-09-17 13:45:25,599 - employee_management - INFO - Employee list requested. Total employees: 1
 2026-09-17 13:45:27,629 - employee_management - INFO - Employee data saved successfully. Total employees: 1
 2026-09-17 13:45:27,640 - employee_management - INFO - Employee Management System exited safely.
+2026-09-17 14:24:27,879 - employee_management - INFO - No saved employee data found.
+2026-09-17 14:24:27,879 - employee_management - INFO - Employee Management System started.
+2026-09-17 14:24:47,926 - employee_management - INFO - Employee added successfully: ID=5, Name=Dhruv
+2026-09-17 14:24:47,927 - employee_management - INFO - Employee data saved successfully. Total employees: 1
+2026-09-17 14:25:00,090 - employee_management - INFO - Employee list requested. Total employees: 1
+2026-09-17 14:25:12,489 - employee_management - WARNING - Employee not found: ID=9
+2026-09-17 14:25:20,676 - employee_management - WARNING - Program interrupted by user using Ctrl+C.
+2026-09-17 14:26:33,071 - employee_management - INFO - No saved employee data found.
+2026-09-17 14:26:33,071 - employee_management - INFO - Employee Management System started.
+2026-09-17 14:26:38,508 - employee_management - INFO - Employee added successfully: ID=1, Name=Prakash
+2026-09-17 14:26:38,510 - employee_management - INFO - Employee data saved successfully. Total employees: 1
+2026-09-17 14:26:42,354 - employee_management - INFO - Employee list requested. Total employees: 1
+2026-09-17 14:26:50,192 - employee_management - WARNING - Program interrupted by user using Ctrl+C.
+2026-09-17 14:50:59,737 - employee_management - INFO - Employee data loaded successfully. Total employees: 1
+2026-09-17 14:50:59,737 - employee_management - INFO - Employee Management System started.
+2026-09-17 14:51:10,255 - employee_management - INFO - Employee added successfully: ID=2, Name=Param
+2026-09-17 14:51:10,256 - employee_management - INFO - Employee data saved successfully. Total employees: 2
+2026-09-17 14:51:13,994 - employee_management - INFO - Employee list requested. Total employees: 2
+2026-09-17 14:51:33,868 - employee_management - INFO - Employee removed successfully: ID=2
+2026-09-17 14:51:33,869 - employee_management - INFO - Employee data saved successfully. Total employees: 1
+2026-09-17 14:51:39,189 - employee_management - INFO - Employee list requested. Total employees: 1
+2026-09-17 14:51:52,438 - employee_management - INFO - Employee updated: ID=1, Name changed from 'Prakash' to 'Paramprakash'
+2026-09-17 14:51:52,440 - employee_management - INFO - Employee data saved successfully. Total employees: 1
+2026-09-17 14:51:55,161 - employee_management - INFO - Employee list requested. Total employees: 1
+2026-09-17 14:52:02,920 - employee_management - WARNING - Employee not found: ID=5
+2026-09-17 14:52:04,827 - employee_management - INFO - Employee list requested. Total employees: 1
+2026-09-17 14:52:11,844 - employee_management - INFO - Employee found: ID=1
+2026-09-17 14:52:22,878 - employee_management - INFO - Employee search started: prakash
+2026-09-17 14:52:22,878 - employee_management - INFO - Employee search completed successfully: prakash
+2026-09-17 14:52:30,911 - employee_management - INFO - Employee search started: kartil
+2026-09-17 14:52:30,912 - employee_management - WARNING - No matching employee found for search: kartil
+2026-09-17 14:52:34,023 - employee_management - INFO - Employee data saved successfully. Total employees: 1
+2026-09-17 14:52:34,023 - employee_management - INFO - Employee Management System exited safely.
+2026-09-17 14:52:40,114 - employee_management - INFO - Employee data loaded successfully. Total employees: 1
+2026-09-17 14:52:40,114 - employee_management - INFO - Employee Management System started.
+2026-09-17 14:52:42,336 - employee_management - WARNING - Program interrupted by user using Ctrl+C.

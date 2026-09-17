@@ -1,0 +1,7 @@
+2026-09-17 13:45:12,383 - employee_management - INFO - Employee data loaded successfully. Total employees: 1
+2026-09-17 13:45:12,383 - employee_management - INFO - Employee Management System started.
+2026-09-17 13:45:20,709 - employee_management - WARNING - Employee ID already exists: 1
+2026-09-17 13:45:20,711 - employee_management - INFO - Employee data saved successfully. Total employees: 1
+2026-09-17 13:45:25,599 - employee_management - INFO - Employee list requested. Total employees: 1
+2026-09-17 13:45:27,629 - employee_management - INFO - Employee data saved successfully. Total employees: 1
+2026-09-17 13:45:27,640 - employee_management - INFO - Employee Management System exited safely.

@@ -41,3 +41,10 @@
 2026-09-17 14:52:40,114 - employee_management - INFO - Employee data loaded successfully. Total employees: 1
 2026-09-17 14:52:40,114 - employee_management - INFO - Employee Management System started.
 2026-09-17 14:52:42,336 - employee_management - WARNING - Program interrupted by user using Ctrl+C.
+2026-09-17 15:59:22,826 - employee_management - INFO - Employee data loaded successfully. Total employees: 1
+2026-09-17 15:59:22,827 - employee_management - INFO - Employee Management System started.
+2026-09-17 15:59:29,337 - employee_management - WARNING - Invalid employee ID entered: 0
+2026-09-17 15:59:35,620 - employee_management - WARNING - Invalid employee name input: empty name entered
+2026-09-17 15:59:40,339 - employee_management - WARNING - Employee ID already exists: 1
+2026-09-17 15:59:40,340 - employee_management - INFO - Employee data saved successfully. Total employees: 1
+2026-09-17 15:59:44,996 - employee_management - WARNING - Program interrupted by user using Ctrl+C.

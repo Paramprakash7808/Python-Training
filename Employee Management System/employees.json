@@ -2,5 +2,53 @@
     {
         "id": 1,
         "name": "Paramprakash"
+    },
+    {
+        "id": "1",
+        "name": "Prakash",
+        "department": "IT",
+        "salary": 15000.0,
+        "experience": 1.0,
+        "location": "Rajkot"
+    },
+    {
+        "id": "E101",
+        "name": "Rahul",
+        "department": "IT",
+        "salary": 50000,
+        "experience": 3,
+        "location": "Rajkot"
+    },
+    {
+        "id": "E102",
+        "name": "Priya",
+        "department": "HR",
+        "salary": 45000,
+        "experience": 2,
+        "location": "Ahmedabad"
+    },
+    {
+        "id": "E103",
+        "name": "Amit",
+        "department": "IT",
+        "salary": 70000,
+        "experience": 5,
+        "location": "Rajkot"
+    },
+    {
+        "id": "E101",
+        "name": "Rahul",
+        "department": "IT",
+        "salary": 50000,
+        "experience": 3,
+        "location": "Rajkot"
+    },
+    {
+        "id": "E104",
+        "name": "",
+        "department": "Finance",
+        "salary": 40000,
+        "experience": 2,
+        "location": "Rajkot"
     }
 ]

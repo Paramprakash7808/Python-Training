@@ -1,6 +1,6 @@
 import unittest
 from unittest.mock import patch
-from src.validation import get_employee_id, get_employee_name
+from src.employee_management.validation import (get_employee_id,get_employee_name,)
 
 class TestGetEmployeeId(unittest.TestCase):
     def test_valid_employee_id(self):

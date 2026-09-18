@@ -1,8 +1,7 @@
 import json
 import logging
 import os
-
-from src.employee import (employees,add_employee,remove_employee,update_employee,find_employee,list_employees,search_employees,is_valid_employee)
+from .employee import (employees,add_employee,remove_employee,update_employee,find_employee,list_employees,search_employees,is_valid_employee,)
 
 DATA_FILE = "employees.json"
 LOG_FOLDER = "logs"
@@ -25,7 +24,6 @@ def load_data():
     try:
         with open(DATA_FILE, "r") as file:
             data = json.load(file)
-
         if not isinstance(data, list):
             logger.error("Invalid data format. JSON data is not a list.")
             print("Invalid data format. Starting with empty employee list.")
@@ -39,14 +37,12 @@ def load_data():
 
         employees.clear()
         employees.extend(data)
-
         logger.info("Employee data loaded successfully. Total employees: %s",len(employees))
         print("Employee data loaded successfully.")
 
     except json.JSONDecodeError:
         logger.error("Invalid JSON syntax in employee data file.")
         print("Invalid JSON file. Starting with empty employee list.")
-
     except OSError as error:
         logger.error("Could not read the data file: %s",error)
         print("Could not read the data file.")
@@ -56,10 +52,8 @@ def save_data():
         with open(DATA_FILE, "w") as file:
             json.dump(employees, file, indent=4)
 
-        logger.info(
-            "Employee data saved successfully. Total employees: %s",len(employees))
+        logger.info("Employee data saved successfully. Total employees: %s",len(employees))
         print("Employee data saved successfully.")
-
     except OSError as error:
         logger.error("Could not save the data file: %s",error)
         print("Could not save employee data.")
@@ -77,7 +71,6 @@ def display_menu():
 def get_menu_choice():
     try:
         return int(input("Enter Your Choice: "))
-
     except ValueError:
         logger.warning("Invalid menu choice entered.")
         print("Please enter a number.")
@@ -87,30 +80,23 @@ def handle_menu_choice(choice):
     if choice == 1:
         add_employee()
         save_data()
-
     elif choice == 2:
         remove_employee()
         save_data()
-
     elif choice == 3:
         update_employee()
         save_data()
-
     elif choice == 4:
         find_employee()
-
     elif choice == 5:
         list_employees()
-
     elif choice == 6:
         search_employees()
-
     elif choice == 7:
         save_data()
         logger.info("Employee Management System exited safely.")
         print("Program exited safely.")
         return False
-
     else:
         logger.warning("Invalid menu choice: %s",choice)
         print("Invalid choice. Please select 1 to 7.")
@@ -120,29 +106,23 @@ def handle_menu_choice(choice):
 def run_application():
     load_data()
     logger.info("Employee Management System started.")
-
     while True:
         display_menu()
         choice = get_menu_choice()
-
         if choice is None:
             continue
 
         should_continue = handle_menu_choice(choice)
-
         if not should_continue:
             break
 
 def main():
     setup_logging()
-
     try:
         run_application()
-
     except KeyboardInterrupt:
         logger.warning("Program interrupted by user using Ctrl+C.")
         print("\nProgram interrupted by user.")
-
     except Exception as error:
         logger.exception("Unexpected application error occurred.")
         print("An unexpected application error occurred.")

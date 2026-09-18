@@ -1,14 +1,11 @@
 def get_department_analysis(employees):
     department_counts = {}
-
     for employee in employees:
         department = employee["department"]
-
         if department not in department_counts:
             department_counts[department] = 0
 
         department_counts[department] += 1
-
     return department_counts
 
 def get_highest_salary(employees):
@@ -16,7 +13,6 @@ def get_highest_salary(employees):
         return None
 
     highest_employee = employees[0]
-
     for employee in employees:
         if employee["salary"] > highest_employee["salary"]:
             highest_employee = employee
@@ -28,7 +24,6 @@ def get_lowest_salary(employees):
         return None
 
     lowest_employee = employees[0]
-
     for employee in employees:
         if employee["salary"] < lowest_employee["salary"]:
             lowest_employee = employee
@@ -40,7 +35,6 @@ def get_average_salary(employees):
         return 0
 
     total_salary = 0
-
     for employee in employees:
         total_salary += employee["salary"]
 
@@ -48,7 +42,6 @@ def get_average_salary(employees):
 
 def filter_by_department(employees, department):
     filtered_employees = []
-
     for employee in employees:
         if employee["department"].lower() == department.lower():
             filtered_employees.append(employee)
@@ -57,7 +50,6 @@ def filter_by_department(employees, department):
 
 def filter_by_location(employees, location):
     filtered_employees = []
-
     for employee in employees:
         if employee["location"].lower() == location.lower():
             filtered_employees.append(employee)
@@ -66,7 +58,6 @@ def filter_by_location(employees, location):
 
 def filter_by_experience(employees, minimum_experience):
     filtered_employees = []
-
     for employee in employees:
         if employee["experience"] >= minimum_experience:
             filtered_employees.append(employee)
@@ -80,7 +71,6 @@ def analyze_experience(employees):
     total_experience = 0
     highest_experience = employees[0]
     lowest_experience = employees[0]
-
     for employee in employees:
         total_experience += employee["experience"]
         if employee["experience"] > highest_experience["experience"]:

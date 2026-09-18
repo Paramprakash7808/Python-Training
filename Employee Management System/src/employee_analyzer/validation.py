@@ -1,27 +1,11 @@
-VALID_DEPARTMENTS = {
-    "IT",
-    "HR",
-    "Finance",
-    "Marketing",
-    "Sales",
-    "Operations"
-}
-
+VALID_DEPARTMENTS = {"IT","HR","Finance","Marketing","Sales","Operations"}
 
 def validate_employee(employee):
     errors = []
-
     if not isinstance(employee, dict):
         return ["Employee record must be a dictionary"]
 
-    required_fields = [
-        "id",
-        "name",
-        "department",
-        "salary",
-        "experience",
-        "location"
-    ]
+    required_fields = ["id","name","department","salary","experience","location"]
 
     for field in required_fields:
         if field not in employee:
@@ -53,13 +37,11 @@ def validate_employee(employee):
 def find_duplicate_employees(employees):
     seen_ids = set()
     duplicate_ids = set()
-
     for employee in employees:
         if not isinstance(employee, dict):
             continue
 
         employee_id = employee.get("id")
-
         if not employee_id:
             continue
 
@@ -74,15 +56,10 @@ def find_duplicate_employees(employees):
 def separate_valid_and_invalid_employees(employees):
     valid_employees = []
     invalid_employees = []
-
     for employee in employees:
         errors = validate_employee(employee)
-
         if errors:
-            invalid_employees.append({
-                "employee": employee,
-                "errors": errors
-            })
+            invalid_employees.append({"employee": employee,"errors": errors})
         else:
             valid_employees.append(employee)
 

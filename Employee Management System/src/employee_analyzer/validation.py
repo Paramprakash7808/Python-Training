@@ -33,7 +33,6 @@ def validate_employee(employee):
 
     return errors
 
-
 def find_duplicate_employees(employees):
     seen_ids = set()
     duplicate_ids = set()
@@ -51,7 +50,6 @@ def find_duplicate_employees(employees):
             seen_ids.add(employee_id)
 
     return list(duplicate_ids)
-
 
 def separate_valid_and_invalid_employees(employees):
     valid_employees = []

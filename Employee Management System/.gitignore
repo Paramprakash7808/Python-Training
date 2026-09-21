@@ -1,7 +1,30 @@
+# Python cache
 __pycache__/
-*.pyc
-.env
+*.py[cod]
+*$py.class
+
+# Virtual environments
 venv/
+env/
+taskenv/
+
+# Environment variables
+.env
 .env.local
-media/
-staticfiles/
+*.env
+
+# Logs
+*.log
+
+# IDE / Editor
+.vscode/
+.idea/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Test / coverage files
+.pytest_cache/
+.coverage
+htmlcov/

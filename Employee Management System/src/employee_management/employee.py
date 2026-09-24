@@ -7,6 +7,28 @@ class Employee:
         self.employee_id = employee_id
         self.name = name
 
+    @property
+    def employee_id(self):
+        return self._employee_id
+
+    @employee_id.setter
+    def employee_id(self, value):
+        if value <= 0:
+            raise ValueError("Employee ID must be greater than 0.")
+
+        self._employee_id = value
+
+    @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        if value.strip() == "":
+            raise ValueError("Name cannot be empty.")
+
+        self._name = value.strip()
+
 class EmployeeManager:
     def __init__(self):
         self.employees = []

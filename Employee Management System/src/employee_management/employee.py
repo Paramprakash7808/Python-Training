@@ -18,10 +18,34 @@ class Employee:
 
         self.name = self.name.strip()
 
+    def __str__(self):
+        return f"Employee ID: {self.employee_id}, Name: {self.name}"
+
+    def __repr__(self):
+        return f"Employee(employee_id={self.employee_id}, name='{self.name}')"
+
+    def __eq__(self, other):
+        if not isinstance(other, Employee):
+            return NotImplemented
+
+        return self.employee_id == other.employee_id
+
+    def __lt__(self, other):
+        if not isinstance(other, Employee):
+            return NotImplemented
+
+        return self.employee_id < other.employee_id
+
 
 class EmployeeManager:
     def __init__(self):
         self.employees = []
+
+    def __len__(self):
+        return len(self.employees)
+
+    def __iter__(self):
+        return iter(self.employees)
 
     def find_employee_by_id(self, employee_id):
         for employee in self.employees:
@@ -48,7 +72,6 @@ class EmployeeManager:
             employee.employee_id,
             employee.name
         )
-
         print("Employee added successfully.")
 
     def remove_employee(self, employee_id):
@@ -68,7 +91,6 @@ class EmployeeManager:
             "Employee removed successfully: ID=%s",
             employee_id
         )
-
         print("Employee removed successfully.")
 
     def update_employee(self, employee_id, new_name):
@@ -94,7 +116,6 @@ class EmployeeManager:
             old_name,
             employee.name
         )
-
         print("Employee updated successfully.")
 
     def find_employee(self, employee_id):

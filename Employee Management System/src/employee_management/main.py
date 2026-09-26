@@ -91,7 +91,6 @@ class EmployeeApplication:
             logger.info("Employee Management System exited safely.")
             print("Program exited safely.")
             return False
-
         else:
             logger.warning("Invalid menu choice: %s",choice)
             print("Invalid choice. Please select 1 to 7.")
@@ -114,13 +113,11 @@ class EmployeeApplication:
 def main():
     setup_logging()
     application = EmployeeApplication()
-
     try:
         application.run()
     except KeyboardInterrupt:
         logger.warning("Program interrupted by user using Ctrl+C.")
         print("\nProgram interrupted by user.")
-
     except Exception as error:
         logger.exception("Unexpected application error occurred.")
         print("An unexpected application error occurred.")

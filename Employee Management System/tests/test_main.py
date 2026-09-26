@@ -1,28 +1,28 @@
 import unittest
 from unittest.mock import patch
+from src.employee_management.employee import Employee
 from src.employee_management.main import EmployeeApplication
+from tests.fake_repository import FakeEmployeeRepository
 
 class TestEmployeeApplication(unittest.TestCase):
     def setUp(self):
-        self.application = EmployeeApplication()
+        self.repository = FakeEmployeeRepository()
+        self.application = EmployeeApplication(repository=self.repository)
 
-    @patch("src.employee_management.main.EmployeeRepository.load_employees")
-    def test_load_data_from_repository(self, mock_load):
-        from src.employee_management.employee import Employee
-        mock_load.return_value = [Employee(101, "Rahul")]
+    def test_load_data_from_repository(self):
+        self.repository.employees = [Employee(101, "Rahul")]
         self.application.load_data()
         self.assertEqual(len(self.application.manager), 1)
         loaded_employee = self.application.manager.find_employee_by_id(101)
         self.assertIsNotNone(loaded_employee)
         self.assertEqual(loaded_employee.name, "Rahul")
 
-    @patch("src.employee_management.main.EmployeeRepository.save_employees")
-    def test_save_data(self, mock_save):
-        from src.employee_management.employee import Employee
+    def test_save_data(self):
         employee = Employee(101, "Rahul")
         self.application.manager.add_loaded_employee(employee)
         self.application.save_data()
-        mock_save.assert_called_once_with(self.application.manager.employees)
+        self.assertEqual(len(self.repository.employees), 1)
+        self.assertEqual(self.repository.employees[0],employee)
 
     @patch("builtins.input", return_value="1")
     def test_valid_menu_choice(self, mock_input):

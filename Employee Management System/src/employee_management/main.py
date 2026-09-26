@@ -1,19 +1,9 @@
 import logging
-import os
 from .employee import Employee, EmployeeManager
 from .validation import EmployeeValidator
 from .repository import EmployeeRepository
-from .json_repository import JsonEmployeeRepository
 from .notification import ConsoleNotification
-
-LOG_FOLDER = "logs"
-LOG_FILE = os.path.join(LOG_FOLDER, "application.log")
-
-def setup_logging():
-    if not os.path.exists(LOG_FOLDER):
-        os.makedirs(LOG_FOLDER)
-
-    logging.basicConfig(filename=LOG_FILE,level=logging.INFO,format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+from .logging_config import setup_logging
 
 logger = logging.getLogger("employee_management")
 

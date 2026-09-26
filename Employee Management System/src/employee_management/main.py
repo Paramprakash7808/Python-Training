@@ -3,6 +3,7 @@ import os
 from .employee import Employee, EmployeeManager
 from .validation import EmployeeValidator
 from .repository import EmployeeRepository
+from .json_repository import JsonEmployeeRepository
 
 LOG_FOLDER = "logs"
 LOG_FILE = os.path.join(LOG_FOLDER, "application.log")
@@ -11,14 +12,14 @@ def setup_logging():
     if not os.path.exists(LOG_FOLDER):
         os.makedirs(LOG_FOLDER)
 
-    logging.basicConfig(filename=LOG_FILE,level=logging.INFO,format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+    logging.basicConfig(filename=LOG_FILE, level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 
 logger = logging.getLogger("employee_management")
 
 class EmployeeApplication:
-    def __init__(self):
+    def __init__(self, repository=None):
         self.validator = EmployeeValidator()
-        self.repository = EmployeeRepository()
+        self.repository = repository or EmployeeRepository()
         self.manager = EmployeeManager()
 
     def load_data(self):
@@ -92,7 +93,7 @@ class EmployeeApplication:
             print("Program exited safely.")
             return False
         else:
-            logger.warning("Invalid menu choice: %s",choice)
+            logger.warning("Invalid menu choice: %s", choice)
             print("Invalid choice. Please select 1 to 7.")
 
         return True

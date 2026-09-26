@@ -1,42 +1,48 @@
 import unittest
 from unittest.mock import patch
-from src.employee_management.validation import (get_employee_id,get_employee_name,)
+from src.employee_management.validation import EmployeeValidator
 
-class TestGetEmployeeId(unittest.TestCase):
-    def test_valid_employee_id(self):
-        with patch("builtins.input", return_value="101"):
-            result = get_employee_id()
+class TestEmployeeValidator(unittest.TestCase):
+    def setUp(self):
+        self.validator = EmployeeValidator()
+
+    @patch("builtins.input", return_value="101")
+    def test_get_valid_employee_id(self, mock_input):
+        result = self.validator.get_employee_id()
         self.assertEqual(result, 101)
 
-    def test_zero_employee_id_is_rejected(self):
-        with patch("builtins.input",side_effect=["0", "101"]):
-            result = get_employee_id()
+    @patch("builtins.input",side_effect=["abc", "101"])
+    def test_get_employee_id_with_invalid_input(self, mock_input):
+        result = self.validator.get_employee_id()
         self.assertEqual(result, 101)
+        self.assertEqual(mock_input.call_count, 2)
 
-    def test_negative_employee_id_is_rejected(self):
-        with patch("builtins.input",side_effect=["-5", "101"]):
-            result = get_employee_id()
+    @patch("builtins.input",side_effect=["0", "101"])
+    def test_get_employee_id_with_zero(self, mock_input):
+        result = self.validator.get_employee_id()
         self.assertEqual(result, 101)
+        self.assertEqual(mock_input.call_count, 2)
 
-    def test_non_numeric_employee_id_is_rejected(self):
-        with patch("builtins.input",side_effect=["abc", "101"]):
-            result = get_employee_id()
+    @patch("builtins.input",side_effect=["-1", "101"])
+    def test_get_employee_id_with_negative_number(self, mock_input):
+        result = self.validator.get_employee_id()
         self.assertEqual(result, 101)
+        self.assertEqual(mock_input.call_count, 2)
 
-class TestGetEmployeeName(unittest.TestCase):
-    def test_valid_employee_name(self):
-        with patch("builtins.input",return_value="Rahul"):
-            result = get_employee_name("Enter Name: ")
+    @patch("builtins.input", return_value="Rahul")
+    def test_get_employee_name(self, mock_input):
+        result = self.validator.get_employee_name("Enter Employee Name: ")
         self.assertEqual(result, "Rahul")
 
-    def test_empty_employee_name_is_rejected(self):
-        with patch("builtins.input",side_effect=["", "Rahul"]):
-            result = get_employee_name("Enter Name: ")
+    @patch("builtins.input",side_effect=["", "Rahul"])
+    def test_get_employee_name_with_empty_input(self, mock_input):
+        result = self.validator.get_employee_name("Enter Employee Name: ")
         self.assertEqual(result, "Rahul")
+        self.assertEqual(mock_input.call_count, 2)
 
-    def test_employee_name_spaces_are_removed(self):
-        with patch("builtins.input",return_value="  Rahul  "):
-            result = get_employee_name("Enter Name: ")
+    @patch("builtins.input", return_value="  Rahul  ")
+    def test_get_employee_name_with_spaces(self, mock_input):
+        result = self.validator.get_employee_name("Enter Employee Name: ")
         self.assertEqual(result, "Rahul")
 
 if __name__ == "__main__":

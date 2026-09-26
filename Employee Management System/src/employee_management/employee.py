@@ -1,6 +1,5 @@
 import logging
 from dataclasses import dataclass
-
 logger = logging.getLogger("employee_management")
 
 @dataclass
@@ -12,7 +11,6 @@ class Employee:
             raise ValueError("Employee ID must be greater than 0.")
         if self.name.strip() == "":
             raise ValueError("Name cannot be empty.")
-
         self.name = self.name.strip()
 
     def __str__(self):
@@ -32,6 +30,17 @@ class Employee:
             return NotImplemented
 
         return self.employee_id < other.employee_id
+
+class Manager(Employee):
+    def __init__(self, employee_id, name, team_size=0):
+        super().__init__(employee_id, name)
+        if team_size < 0:
+            raise ValueError("Team size cannot be negative.")
+
+        self.team_size = team_size
+
+    def __str__(self):
+        return (f"Manager ID: {self.employee_id}, "f"Name: {self.name}, "f"Team Size: {self.team_size}")
 
 class EmployeeManager:
     def __init__(self):

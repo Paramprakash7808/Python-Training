@@ -1,10 +1,20 @@
 import logging
 import sqlite3
+from abc import ABC, abstractmethod
 from .employee import Employee
 
 logger = logging.getLogger("employee_management")
 
-class EmployeeRepository:
+class EmployeeRepositoryInterface(ABC):
+    @abstractmethod
+    def load_employees(self):
+        pass
+
+    @abstractmethod
+    def save_employees(self, employees):
+        pass
+
+class EmployeeRepository(EmployeeRepositoryInterface):
     def __init__(self, database="employees.db"):
         self.database = database
 
@@ -30,7 +40,7 @@ class EmployeeRepository:
                 employee = Employee(employee_id, name)
                 employees.append(employee)
 
-            logger.info("Employee data loaded successfully. Total employees: %s",len(employees))
+            logger.info("Employee data loaded successfully. Total employees: %s", len(employees))
             if employees:
                 print("Employee data loaded successfully.")
             else:
@@ -49,9 +59,9 @@ class EmployeeRepository:
             with sqlite3.connect(self.database) as connection:
                 connection.execute("DELETE FROM employees")
                 for employee in employees:
-                    connection.execute("""INSERT INTO employees (id, name) VALUES (?, ?)""",(employee.employee_id, employee.name))
+                    connection.execute("""INSERT INTO employees (id, name) VALUES (?, ?)""", (employee.employee_id, employee.name))
 
-            logger.info("Employee data saved successfully. Total employees: %s",len(employees))
+            logger.info("Employee data saved successfully. Total employees: %s", len(employees))
             print("Employee data saved successfully.")
 
         except sqlite3.Error as error:

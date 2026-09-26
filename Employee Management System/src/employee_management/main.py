@@ -4,6 +4,7 @@ from .employee import Employee, EmployeeManager
 from .validation import EmployeeValidator
 from .repository import EmployeeRepository
 from .json_repository import JsonEmployeeRepository
+from .notification import ConsoleNotification
 
 LOG_FOLDER = "logs"
 LOG_FILE = os.path.join(LOG_FOLDER, "application.log")
@@ -12,14 +13,15 @@ def setup_logging():
     if not os.path.exists(LOG_FOLDER):
         os.makedirs(LOG_FOLDER)
 
-    logging.basicConfig(filename=LOG_FILE, level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+    logging.basicConfig(filename=LOG_FILE,level=logging.INFO,format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 
 logger = logging.getLogger("employee_management")
 
 class EmployeeApplication:
-    def __init__(self, repository=None):
+    def __init__(self, repository=None, notification=None):
         self.validator = EmployeeValidator()
         self.repository = repository or EmployeeRepository()
+        self.notification = notification or ConsoleNotification()
         self.manager = EmployeeManager()
 
     def load_data(self):
@@ -53,15 +55,18 @@ class EmployeeApplication:
         employee_name = self.validator.get_employee_name("Enter Employee Name: ")
         employee = Employee(employee_id, employee_name)
         self.manager.add_employee(employee)
+        self.notification.send("Employee added successfully.")
 
     def remove_employee(self):
         employee_id = self.validator.get_employee_id()
         self.manager.remove_employee(employee_id)
+        self.notification.send("Employee removed successfully.")
 
     def update_employee(self):
         employee_id = self.validator.get_employee_id()
         new_name = self.validator.get_employee_name("Enter New Employee Name: ")
         self.manager.update_employee(employee_id, new_name)
+        self.notification.send("Employee updated successfully.")
 
     def find_employee(self):
         employee_id = self.validator.get_employee_id()
